@@ -17,9 +17,21 @@ app.use('/api', createProxyMiddleware({
   },
 }));
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build'), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('index.html') || filePath.endsWith('progress-tracker-debug.js')) {
+      res.setHeader('Cache-Control', 'no-store');
+      return;
+    }
+
+    if (filePath.includes(`${path.sep}static${path.sep}`)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+  },
+}));
 
 app.get('*', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
