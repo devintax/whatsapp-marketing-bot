@@ -241,7 +241,15 @@ app.use('/api/channels', require('./routes/channels'));
 
 // OAuth2 auth routes for external integrations
 app.use('/api/crm', require('./routes/crm'));
-app.use('/api/test', require('./routes/test-import'));
+try {
+  app.use('/api/test', require('./routes/test-import'));
+} catch (error) {
+  if (error.code === 'MODULE_NOT_FOUND' && error.message.includes('./routes/test-import')) {
+    console.warn('Optional test-import route not found; skipping /api/test routes.');
+  } else {
+    throw error;
+  }
+}
 app.use('/api/fix', require('./routes/fix'));
 
 // Routes (with auth middleware applied)

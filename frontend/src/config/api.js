@@ -5,14 +5,23 @@ import axios from 'axios';
 // This was causing external domains to use localhost:5000
 
 const getApiBaseUrl = () => {
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+
   // Always check current hostname (no caching to prevent issues)
   const hostname = window.location.hostname;
   
   console.log('🔍 API URL Detection - Hostname:', hostname);
   
   // PRIORITY 1: External domain detection FIRST
+  if (hostname === 'bot.dfgworld.net') {
+    const apiUrl = 'https://bot.dfgworld.net';
+    console.log('BOT DOMAIN DETECTED - Using same-origin API:', apiUrl);
+    return apiUrl;
+  }
+
   if (hostname === 'connect.vemgootech.info') {
-    // Use the cloudflared tunnel domain for API
     const apiUrl = 'https://api.vemgootech.info';
     console.log('🌐 EXTERNAL DOMAIN DETECTED - Using tunnel API:', apiUrl);
     return apiUrl;
@@ -27,13 +36,13 @@ const getApiBaseUrl = () => {
   
   // PRIORITY 3: Local development (localhost/127.0.0.1)
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    const apiUrl = 'http://localhost:5000';
+    const apiUrl = 'http://localhost:5010';
     console.log('🔧 LOCAL DEVELOPMENT:', apiUrl);
     return apiUrl;
   }
   
   // FALLBACK: If unknown hostname, log and use localhost
-  const apiUrl = 'http://localhost:5000';
+  const apiUrl = 'http://localhost:5010';
   console.log('⚠️ UNKNOWN HOSTNAME, using localhost fallback:', hostname, '→', apiUrl);
   return apiUrl;
 };
