@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-10-13T12:22:24.210Z",
+  "testUser": "vkgbewonyo@gmail.com",
+  "targetPhones": [
+    "+14432072634",
+    "+13028979466",
+    "+13479324435"
+  ],
+  "results": {
+    "authentication": {
+      "success": true,
+      "token": "eyJhbGciOiJIUzI1NiIs...",
+      "userId": "68e37bea4eb7fec9ede39581",
+      "userName": "Vincent Gbewonyo"
+    },
+    "contactManagement": {
+      "existingContacts": 6,
+      "newContactsCreated": [
+        {
+          "phone": "+14432072634",
+          "success": false,
+          "error": "Contact with this phone number already exists"
+        },
+        {
+          "phone": "+13028979466",
+          "success": false,
+          "error": "Contact with this phone number already exists"
+        },
+        {
+          "phone": "+13479324435",
+          "success": false,
+          "error": "Contact with this phone number already exists"
+        }
+      ],
+      "contactIds": []
+    },
+    "mediaUpload": {
+      "success": false,
+      "error": "Request failed with status code 404",
+      "response": {
+        "message": "Route not found"
+      }
+    },
+    "campaignCreation": {
+      "success": false,
+      "error": "Request failed with status code 400",
+      "response": {
+        "success": false,
+        "message": "Validation failed",
+        "errors": [
+          {
+            "type": "field",
+            "value": "",
+            "msg": "Campaign name is required",
+            "path": "name",
+            "location": "body"
+          }
+        ]
+      }
+    }
+  },
+  "summary": {
+    "authenticationPassed": true,
+    "contactManagementPassed": false,
+    "mediaUploadPassed": false,
+    "campaignCreationPassed": false,
+    "campaignValidationPassed": false,
+    "whatsappConnectionReady": false,
+    "campaignSendingPassed": false,
+    "overallSuccessRate": "1/7 (14%)"
+  }
+}

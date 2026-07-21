@@ -1,0 +1,10 @@
+
+# Add to backend/.env (backup current first)
+# Option 1: Use local MongoDB (recommended for development)
+MONGODB_URI=mongodb://localhost:27017/whatsapp_marketing_bot
+
+# Option 2: Update cluster hostname if needed
+# MONGODB_URI=mongodb+srv://ubayclothings_db_user:tZ29wDhlC5DSsEqP@whatsappmarketingbot.v3ovu.mongodb.net/whatsapp_marketing_bot?retryWrites=true&w=majority
+
+# Option 3: Add connection timeout options
+# MONGODB_URI=mongodb+srv://ubayclothings_db_user:tZ29wDhlC5DSsEqP@cluster0.ijeqwjt.mongodb.net/whatsapp_marketing_bot?retryWrites=true&w=majority&connectTimeoutMS=10000&socketTimeoutMS=10000

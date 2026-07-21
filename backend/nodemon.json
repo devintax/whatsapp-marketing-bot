@@ -1,0 +1,11 @@
+﻿{
+  "ext": "js",
+  "ignore": [
+    "whatsapp_sessions/**",
+    "uploads/**", 
+    "node_modules/**",
+    "*.log"
+  ],
+  "delay": 5000,
+  "verbose": false
+}

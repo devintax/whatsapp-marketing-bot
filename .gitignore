@@ -1,0 +1,192 @@
+# WhatsApp Marketing Bot - Git Ignore File
+# This file tells Git which files/folders to NEVER commit to the repository
+
+# ================================
+# CRITICAL: SENSITIVE DATA
+# ================================
+# Never commit environment variables or API keys!
+.env
+.env.local
+.env.production
+.env.development
+backend/.env
+backend/.env.*
+!backend/.env.example
+frontend/.env
+
+# API Keys and Credentials
+**/api-keys.json
+**/credentials.json
+**/*secret*
+**/*password*
+
+# ================================
+# WHATSAPP SESSION DATA
+# ================================
+# WhatsApp Web.js session files (contains authentication data)
+backend/whatsapp_sessions/
+whatsapp_sessions/
+.wwebjs_auth/
+.wwebjs_cache/
+
+# ================================
+# NODE.JS
+# ================================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Testing
+coverage/
+*.log
+
+# Production builds
+build/
+dist/
+frontend/build/
+backend/dist/
+
+# ================================
+# OPERATING SYSTEM FILES
+# ================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# ================================
+# IDE / EDITOR FILES
+# ================================
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains IDEs (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ================================
+# TEMPORARY FILES
+# ================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+
+# ================================
+# DATABASE FILES
+# ================================
+# Don't commit local database files
+*.sqlite
+*.sqlite3
+*.db
+
+# MongoDB dumps
+dump/
+*.bson
+
+# ================================
+# LOGS
+# ================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ================================
+# MISCELLANEOUS
+# ================================
+# Package manager lock files (optional - some teams commit these)
+# Uncomment if you don't want to commit lock files:
+# package-lock.json
+# yarn.lock
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn Integrity file
+.yarn-integrity
+
+# ================================
+# CLOUDFLARE TUNNEL (Optional)
+# ================================
+# If you have Cloudflare Tunnel credentials stored locally
+cloudflared/
+*.pem
+
+# ================================
+# PROJECT-SPECIFIC
+# ================================
+# Campaign exports
+campaign-exports/
+exports/
+
+# Uploaded media files (if storing locally)
+uploads/
+media/
+
+# Test files that shouldn't be in production
+test-*.js
+*-test.js
+*.test.js
+
+# Refresh markers
+refresh.txt
+
+# Local archives imported into the workspace
+*.zip
+
+# QR codes for WhatsApp connection
+qr-codes/
+*.qr.png

@@ -1,0 +1,19 @@
+tunnel: 4425d360-34e0-4f6b-ab2f-ad3377968858
+credentials-file: C:\Users\vinny\.cloudflared\4425d360-34e0-4f6b-ab2f-ad3377968858.json
+
+ingress:
+  # Frontend - connect.vemgootech.info routes to local frontend on port 8080
+  - hostname: connect.vemgootech.info
+    service: http://localhost:8080
+    # Add origin request headers to help with SPA routing
+    originRequest:
+      noTLSVerify: true
+  
+  # API Backend - api.vemgootech.info routes to local backend on port 5000
+  - hostname: api.vemgootech.info
+    service: http://localhost:5000
+    originRequest:
+      noTLSVerify: true
+  
+  # Catch-all rule (required)
+  - service: http_status:404

@@ -1,0 +1,29 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  media:
+    image: nginx:1.27-alpine
+    ports:
+      - "8082:80"
+    volumes:
+      - ./backend/uploads:/usr/share/nginx/html/media:ro
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TUNNEL_TOKEN}
+    depends_on:
+      - media
+    restart: unless-stopped
+    profiles:
+      - tunnel
+
+volumes:
+  redis-data:

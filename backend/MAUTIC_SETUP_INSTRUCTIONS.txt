@@ -1,0 +1,23 @@
+🎯 MAUTIC OAUTH2 APP CONFIGURATION CHECKLIST
+==============================================
+
+✅ VERIFY THESE SETTINGS IN MAUTIC:
+
+1. Go to: https://dfgbusiness.com/mautic/s/credentials
+2. Find OAuth2 app with Client ID: 1_5dyitz9k5s4kck8skw0cg48s84oksws808w0s8k8040cksks0o
+
+📋 Required Configuration:
+├── Name: "WhatsApp Marketing Bot" (or similar)
+├── Redirect URI: https://connect.vemgootech.info/api/auth/mautic/callback
+├── Grant Types: ☑️ Authorization Code ☑️ Refresh Token
+├── Scopes: ☑️ contacts:read ☑️ contacts:write ☑️ campaigns:read
+├── Published: ☑️ Yes
+└── API Access: ☑️ Enabled
+
+🔧 If the redirect URI is wrong, update it to:
+   https://connect.vemgootech.info/api/auth/mautic/callback
+
+🔑 Once verified, copy the Client Secret and run:
+   node update-mautic-secret.js
+
+⚠️  IMPORTANT: The redirect URI must match exactly!

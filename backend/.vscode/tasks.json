@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Backend Server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Debug and Fix Mautic Credentials",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"debug-fix-credentials.js"
+			],
+			"group": "build"
+		}
+	]
+}

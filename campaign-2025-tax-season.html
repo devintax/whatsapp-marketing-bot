@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Financial Group - 2025 Tax Season Launch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .header .tagline {
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0.95;
+        }
+        
+        /* Announcement Banner */
+        .announcement {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+            padding: 25px 30px;
+            margin: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+        }
+        
+        .announcement .main-text {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .announcement .sub-text {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #1e3c72;
+            font-weight: bold;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .benefit-card {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .benefit-card .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .benefit-card .title {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #1e3c72;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-card .description {
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        /* Special Offers Section */
+        .special-offers {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            margin: 40px 20px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(255, 236, 210, 0.4);
+        }
+        
+        .special-offers h2 {
+            text-align: center;
+            color: #d63031;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .special-offers ul {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .special-offers li {
+            padding: 8px 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+        
+        .special-offers li::before {
+            content: "✓";
+            color: #00b894;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 12px;
+        }
+        
+        /* Call-to-Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            text-align: center;
+            padding: 50px 30px;
+            margin: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(168, 237, 234, 0.3);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2em;
+            color: #d63031;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section .subheading {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+            padding: 20px 50px;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+        
+        /* Contact Information Section */
+        .contact-section {
+            padding: 40px 20px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            border-color: #764ba2;
+            background: #f0f4ff;
+        }
+        
+        .contact-card .emoji {
+            font-size: 2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .contact-card .label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .contact-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Location Section */
+        .location-section {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            text-align: center;
+            padding: 25px;
+            margin: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(255, 234, 167, 0.4);
+        }
+        
+        .location-section h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .location-section address {
+            font-style: normal;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        /* Footer Section */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .badges {
+            margin-bottom: 20px;
+        }
+        
+        .badge {
+            background: #00b894;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 5px;
+            display: inline-block;
+        }
+        
+        .footer-tagline {
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .header .tagline {
+                font-size: 1.1em;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-button {
+                font-size: 1.1em;
+                padding: 15px 30px;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .announcement .main-text {
+                font-size: 1.2em;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>🌟 Divine Financial Group 🌟</h1>
+            <p class="tagline">Your Financial Success Is Our Mission!</p>
+        </div>
+    </header>
+
+    <!-- Announcement Banner -->
+    <section class="announcement">
+        <div class="main-text">🎉 The 2025 Tax Filing Season Is Officially Open! 🎉</div>
+        <div class="sub-text">Don't wait until the last minute to secure your financial future.</div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Choose Divine Financial Group</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="title">
+                        <span class="emoji">💼</span>Expert Tax Preparation
+                    </div>
+                    <div class="description">Professional tax preparation and filing services tailored to your needs</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="title">
+                        <span class="emoji">💰</span>Maximum Refund Guarantee
+                    </div>
+                    <div class="description">We ensure you get every dollar you deserve</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="title">
+                        <span class="emoji">🔒</span>Secure Platform
+                    </div>
+                    <div class="description">Safe and encrypted document upload system</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="title">
+                        <span class="emoji">👨‍💼</span>Certified Professionals
+                    </div>
+                    <div class="description">Direct access to experienced tax experts</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="title">
+                        <span class="emoji">⚡</span>Fast Processing
+                    </div>
+                    <div class="description">Quick turnaround time for your convenience</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="title">
+                        <span class="emoji">📅</span>Year-Round Support
+                    </div>
+                    <div class="description">Tax planning assistance whenever you need it</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section class="special-offers">
+        <h2>🎁 Special 2025 Benefits</h2>
+        <ul>
+            <li>FREE consultation for new clients</li>
+            <li>15% discount on business tax services</li>
+            <li>Electronic filing for faster refunds</li>
+            <li>Year-round tax planning support included</li>
+        </ul>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta-section">
+        <h2>📋 Ready to Get Started?</h2>
+        <p class="subheading">Upload your documents securely and let us handle the rest!</p>
+        <a href="https://dfgbusiness.com/cftp" target="_blank" class="cta-button">
+            🔒 Secure Document Upload
+        </a>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">📞 Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <span class="emoji">📱</span>
+                    <div class="label">Phone:</div>
+                    <a href="tel:+13023225515">+1 302 322 5515</a>
+                </div>
+                <div class="contact-card">
+                    <span class="emoji">💬</span>
+                    <div class="label">WhatsApp:</div>
+                    <a href="https://wa.me/13024208747">+1 302 420 8747</a>
+                </div>
+                <div class="contact-card">
+                    <span class="emoji">✉️</span>
+                    <div class="label">Email:</div>
+                    <a href="mailto:info@dfgbusiness.com">info@dfgbusiness.com</a>
+                </div>
+                <div class="contact-card">
+                    <span class="emoji">🌐</span>
+                    <div class="label">Website:</div>
+                    <a href="https://dfgbusiness.com" target="_blank">dfgbusiness.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+        <h2>📍 Office Location</h2>
+        <address>
+            Divine Financial Group<br>
+            622 E. Basin Rd.<br>
+            New Castle, DE 19720
+        </address>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="badges">
+            <span class="badge">✓ Licensed & Insured</span>
+            <span class="badge">✓ Professional Tax Services Since 2020</span>
+        </div>
+        <p class="footer-tagline">Divine Financial Group - Your success is our mission! 🎯</p>
+    </footer>
+</body>
+</html>

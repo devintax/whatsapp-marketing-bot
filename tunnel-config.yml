@@ -1,0 +1,36 @@
+tunnel: whatsapp-bot
+credentials-file: ~/.cloudflared/whatsapp-bot.json
+
+ingress:
+  # API Backend routes - proxy /api/* to backend server (MUST BE FIRST)
+  - hostname: connect.vemgootech.info
+    path: /api*
+    service: http://localhost:5000
+    originRequest:
+      httpHostHeader: localhost:5000
+      noTLSVerify: true
+  
+  # Frontend (React SPA) - serve everything else from port 8080
+  # This handles ALL non-API routes including /dashboard, /contacts, /campaigns
+  - hostname: connect.vemgootech.info
+    service: http://localhost:8080
+    originRequest:
+      httpHostHeader: localhost:8080
+      noTLSVerify: true
+      # These headers ensure proper SPA routing
+      connectTimeout: 30s
+      tlsTimeout: 30s
+      tcpKeepAlive: 30s
+      keepAliveConnections: 100
+      keepAliveTimeout: 90s
+      # Force all non-API requests to go to frontend
+      disableChunkedEncoding: false
+  
+  # Catch-all rule (required by cloudflared)
+  - service: http_status:404
+
+# Enhanced logging for SPA routing debugging
+logDirectory: ./cloudflared-logs
+loglevel: debug
+retries: 3
+no-autoupdate: true

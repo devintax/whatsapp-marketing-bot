@@ -1,0 +1,86 @@
+{
+  "timestamp": "2025-10-09T18:06:21.795Z",
+  "summary": {
+    "total": 15,
+    "passed": 0,
+    "failed": 15,
+    "successRate": "0.00%"
+  },
+  "tests": [
+    {
+      "name": "Get Business Data Types",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Initial Business Data",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Create Business Data (Text)",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Updated Business Data",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Download Sample Contacts CSV",
+      "success": false,
+      "details": "Request failed with status code 401"
+    },
+    {
+      "name": "Download Sample Products CSV",
+      "success": false,
+      "details": "Request failed with status code 401"
+    },
+    {
+      "name": "Download Sample Customers CSV",
+      "success": false,
+      "details": "Request failed with status code 401"
+    },
+    {
+      "name": "Get Analytics Stats",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Message Status Breakdown",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Campaign Performance",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Top Campaigns",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Dashboard Analytics",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Contacts",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get Campaigns",
+      "success": false,
+      "details": "Token is not valid"
+    },
+    {
+      "name": "Get WhatsApp Status",
+      "success": false,
+      "details": "Token is not valid"
+    }
+  ]
+}

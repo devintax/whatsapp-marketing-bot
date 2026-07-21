@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API URL Test</title>
+</head>
+<body>
+    <h1>API URL Detection Test</h1>
+    <div id="results"></div>
+    <script>
+        // Simulate the API URL detection logic
+        const getApiBaseUrl = () => {
+            const hostname = window.location.hostname;
+            console.log('🔍 API URL Detection - Hostname:', hostname);
+            
+            if (hostname === 'connect.vemgootech.info') {
+                const apiUrl = 'https://api.vemgootech.info';
+                console.log('🌐 EXTERNAL DOMAIN DETECTED - Using tunnel API:', apiUrl);
+                return apiUrl;
+            } 
+            
+            if (hostname === '10.0.0.181') {
+                const apiUrl = 'http://10.0.0.181:5000';
+                console.log('📱 MOBILE/TABLET ACCESS DETECTED:', apiUrl);
+                return apiUrl;
+            }
+            
+            if (hostname === 'localhost' || hostname === '127.0.0.1') {
+                const apiUrl = 'http://localhost:5000';
+                console.log('🔧 LOCAL DEVELOPMENT:', apiUrl);
+                return apiUrl;
+            }
+            
+            const apiUrl = 'http://localhost:5000';
+            console.log('⚠️ UNKNOWN HOSTNAME, using localhost fallback:', hostname, '→', apiUrl);
+            return apiUrl;
+        };
+        
+        const apiUrl = getApiBaseUrl();
+        
+        document.getElementById('results').innerHTML = `
+            <p><strong>Current Hostname:</strong> ${window.location.hostname}</p>
+            <p><strong>Detected API URL:</strong> ${apiUrl}</p>
+            <p><strong>Full URL:</strong> ${window.location.href}</p>
+            <p>Check browser console for detailed logs.</p>
+        `;
+        
+        // Test API connectivity
+        fetch(apiUrl + '/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Origin': window.location.origin
+            },
+            body: JSON.stringify({
+                email: 'test@example.com',
+                password: 'test'
+            })
+        })
+        .then(response => {
+            console.log('✅ API Test Response Status:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('✅ API Test Response Data:', data);
+            document.getElementById('results').innerHTML += `
+                <p><strong>API Test:</strong> ✅ Connected (Status: 400 - Invalid credentials is expected)</p>
+            `;
+        })
+        .catch(error => {
+            console.error('❌ API Test Error:', error);
+            document.getElementById('results').innerHTML += `
+                <p><strong>API Test:</strong> ❌ Failed - ${error.message}</p>
+            `;
+        });
+    </script>
+</body>
+</html>

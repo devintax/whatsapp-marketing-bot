@@ -1,0 +1,75 @@
+# 🔄 Auto-Push Workflow
+# Automatically commits and pushes changes to GitHub on schedule or manual trigger
+
+name: Auto-Commit & Push
+
+# Trigger options:
+# 1. Manual trigger from GitHub Actions UI
+# 2. On schedule (e.g., daily at midnight)
+# 3. On workflow dispatch (manual button click)
+on:
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+    inputs:
+      commit_message:
+        description: 'Commit message'
+        required: false
+        default: 'Auto-commit: Save latest changes'
+  
+  # Optional: Uncomment to enable scheduled auto-commits
+  # schedule:
+  #   - cron: '0 0 * * *'  # Daily at midnight UTC
+
+jobs:
+  auto-commit:
+    name: 🔄 Auto Commit & Push
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: 🔍 Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet
+          if [ $? -eq 0 ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "📊 No changes detected"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📊 Changes detected!"
+          fi
+      
+      - name: 📝 Commit changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          
+          COMMIT_MSG="${{ github.event.inputs.commit_message }}"
+          if [ -z "$COMMIT_MSG" ]; then
+            COMMIT_MSG="Auto-commit: Save latest changes [$(date +'%Y-%m-%d %H:%M:%S')]"
+          fi
+          
+          git add -A
+          git commit -m "$COMMIT_MSG"
+          echo "✅ Changes committed"
+      
+      - name: 🚀 Push to GitHub
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git push origin main
+          echo "✅ Changes pushed to GitHub"
+      
+      - name: 📊 Summary
+        run: |
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "🎉 Auto-commit completed successfully!" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ Changes committed and pushed to main branch" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No changes to commit" >> $GITHUB_STEP_SUMMARY
+          fi
