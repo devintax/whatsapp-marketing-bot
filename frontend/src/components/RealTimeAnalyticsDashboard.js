@@ -111,7 +111,7 @@ const RealTimeAnalyticsDashboard = ({
     }
 
     // 🔧 FIX: Use API_BASE_URL for Socket.io connection (supports Cloudflare tunnel)
-    const socketUrl = API_BASE_URL || process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const socketUrl = API_BASE_URL || process.env.REACT_APP_API_URL || window.location.origin;
     
     console.log('📊 RealTimeAnalyticsDashboard: Initializing Socket.io connection...');
     console.log('   userId:', userId);

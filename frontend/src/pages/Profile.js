@@ -34,7 +34,7 @@ import {
 } from '@mui/icons-material';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
-import { API_ENDPOINTS } from '../config/api';
+import { API_BASE_URL, API_ENDPOINTS } from '../config/api';
 
 function TabPanel({ children, value, index }) {
   return (
@@ -160,21 +160,19 @@ export default function Profile() {
         
         // Set image previews with proper URL construction
         if (userData.profilePicture) {
-          const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
           // Ensure single slash between URL and path
           const picturePath = userData.profilePicture.startsWith('/') 
             ? userData.profilePicture.substring(1)  // Remove leading slash
             : userData.profilePicture;
-          setAvatarPreview(`${apiUrl}/${picturePath}`);
+          setAvatarPreview(`${API_BASE_URL}/${picturePath}`);
         }
         
         if (userData.businessProfile?.logo) {
-          const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
           // Ensure single slash between URL and path
           const logoPath = userData.businessProfile.logo.startsWith('/') 
             ? userData.businessProfile.logo.substring(1)  // Remove leading slash
             : userData.businessProfile.logo;
-          setLogoPreview(`${apiUrl}/${logoPath}`);
+          setLogoPreview(`${API_BASE_URL}/${logoPath}`);
         }
       }
     } catch (error) {
@@ -297,8 +295,7 @@ export default function Profile() {
         
         setProfile({ ...profile, profilePicture: response.data.profilePicture });
         
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-        setAvatarPreview(`${apiUrl}/${picturePath}`);
+        setAvatarPreview(`${API_BASE_URL}/${picturePath}`);
         
         toast.success('Profile picture updated!');
       }
@@ -345,11 +342,10 @@ export default function Profile() {
         setProfile({ ...profile, businessLogo: response.data.businessLogo });
         
         // Construct preview URL properly (avoid double slashes)
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
         const logoPath = response.data.businessLogo.startsWith('/') 
           ? response.data.businessLogo.substring(1)  // Remove leading slash
           : response.data.businessLogo;
-        setLogoPreview(`${apiUrl}/${logoPath}`);
+        setLogoPreview(`${API_BASE_URL}/${logoPath}`);
         
         toast.success('Business logo updated!');
       }

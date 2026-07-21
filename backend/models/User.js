@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
     industry: {
       type: String,
       default: 'other',
-      enum: ['finance', 'retail', 'healthcare', 'education', 'technology', 'real_estate', 'consulting', 'marketing', 'other']
+      enum: ['finance', 'retail', 'healthcare', 'education', 'technology', 'real_estate', 'hospitality', 'manufacturing', 'consulting', 'marketing', 'other']
     },
     description: {
       type: String,
@@ -135,7 +135,7 @@ const userSchema = new mongoose.Schema({
     defaultTone: {
       type: String,
       default: 'professional',
-      enum: ['professional', 'friendly', 'casual', 'formal', 'persuasive']
+      enum: ['professional', 'friendly', 'casual', 'formal', 'persuasive', 'enthusiastic']
     },
     autoTrainContext: {
       type: Boolean,

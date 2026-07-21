@@ -6,7 +6,7 @@ const apiBase =
   process.env.REACT_APP_API_BASE ||
   (window?.location?.hostname?.endsWith('vemgootech.info')
     ? 'https://api.vemgootech.info'
-    : 'http://localhost:5000');
+    : 'http://localhost:5010');
 
 export const API_BASE_URL = apiBase;
 

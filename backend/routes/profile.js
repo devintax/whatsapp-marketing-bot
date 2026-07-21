@@ -8,6 +8,15 @@ const User = require('../models/User');
 const auth = require('../middleware/auth');
 const { publicMediaUrl, uploadRoot } = require('../utils/mediaUrl');
 
+const normalizeBusinessIndustry = (industry) => {
+  const aliases = {
+    financial: 'finance',
+    financial_services: 'finance'
+  };
+
+  return aliases[industry] || industry;
+};
+
 // Configure multer for avatar uploads
 const avatarStorage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -127,7 +136,9 @@ router.put('/', auth, async (req, res) => {
     if (req.body.businessProfile) {
       Object.keys(req.body.businessProfile).forEach(key => {
         if (req.body.businessProfile[key] !== undefined) {
-          user.businessProfile[key] = req.body.businessProfile[key];
+          user.businessProfile[key] = key === 'industry'
+            ? normalizeBusinessIndustry(req.body.businessProfile[key])
+            : req.body.businessProfile[key];
         }
       });
     }

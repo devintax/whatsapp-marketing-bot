@@ -16,12 +16,12 @@ const getApiBaseUrl = () => {
     // Mobile/tablet access via network IP
     console.log('📱 MOBILE/TABLET ACCESS DETECTED');
     console.log('🌐 Using network IP for backend connection');
-    return 'http://10.0.0.181:5000';
+    return 'http://10.0.0.181:5010';
   }
   
   // Development (localhost)
   console.log('🏠 USING LOCALHOST');
-  return 'http://localhost:5000';
+  return 'http://localhost:5010';
 };
 
 console.log('🌐 API Configuration - TIMESTAMP:', new Date().toISOString());

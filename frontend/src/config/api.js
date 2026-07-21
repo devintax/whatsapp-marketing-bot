@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // DO NOT CACHE - Always compute fresh to prevent stale localhost URLs
-// This was causing external domains to use localhost:5000
+// This prevents external domains from falling back to local-only API URLs.
 
 const getApiBaseUrl = () => {
   if (process.env.REACT_APP_API_URL) {
@@ -29,7 +29,7 @@ const getApiBaseUrl = () => {
   
   // PRIORITY 2: Mobile/tablet access via network IP
   if (hostname === '10.0.0.181') {
-    const apiUrl = 'http://10.0.0.181:5000';
+    const apiUrl = 'http://10.0.0.181:5010';
     console.log('📱 MOBILE/TABLET ACCESS DETECTED:', apiUrl);
     return apiUrl;
   }

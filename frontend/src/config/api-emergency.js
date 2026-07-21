@@ -4,7 +4,7 @@
 const getApiBaseUrl = () => {
   // TEMPORARY FIX: Force localhost until tunnel is restored
   console.log('🚨 EMERGENCY MODE: Using localhost to bypass tunnel issue');
-  return 'http://localhost:5000';
+  return 'http://localhost:5010';
 };
 
 const API_BASE_URL = getApiBaseUrl();

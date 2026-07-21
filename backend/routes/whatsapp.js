@@ -812,7 +812,7 @@ router.post('/send-campaign', auth, async (req, res) => {
         primaryMediaUrl = null;
       } else if (mediaFile.preview && mediaFile.preview.startsWith('/uploads/')) {
         // Convert relative path to full URL
-        primaryMediaUrl = `http://localhost:5000${mediaFile.preview}`;
+        primaryMediaUrl = `${process.env.MEDIA_PUBLIC_URL || process.env.PUBLIC_BASE_URL || 'http://localhost:5010'}${mediaFile.preview}`;
         console.log(`📎 Using server media file: ${primaryMediaUrl}`);
       } else if (mediaFile.file) {
         // Use file path directly

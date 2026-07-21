@@ -19,18 +19,18 @@
             } 
             
             if (hostname === '10.0.0.181') {
-                const apiUrl = 'http://10.0.0.181:5000';
+                const apiUrl = 'http://10.0.0.181:5010';
                 console.log('📱 MOBILE/TABLET ACCESS DETECTED:', apiUrl);
                 return apiUrl;
             }
             
             if (hostname === 'localhost' || hostname === '127.0.0.1') {
-                const apiUrl = 'http://localhost:5000';
+                const apiUrl = 'http://localhost:5010';
                 console.log('🔧 LOCAL DEVELOPMENT:', apiUrl);
                 return apiUrl;
             }
             
-            const apiUrl = 'http://localhost:5000';
+            const apiUrl = window.location.origin;
             console.log('⚠️ UNKNOWN HOSTNAME, using localhost fallback:', hostname, '→', apiUrl);
             return apiUrl;
         };
