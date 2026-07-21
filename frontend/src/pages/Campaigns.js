@@ -449,6 +449,8 @@ export default function Campaigns() {
   };
 
   const handleSendCampaign = async (campaign) => {
+    let recipients = [];
+
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
@@ -535,7 +537,7 @@ export default function Campaigns() {
       console.log('===========================');
 
       // Extract phone numbers from contacts
-      const recipients = contacts
+      recipients = contacts
         .filter(contact => contact.phone)
         .map(contact => contact.phone);
 

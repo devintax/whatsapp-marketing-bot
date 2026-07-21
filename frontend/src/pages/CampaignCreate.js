@@ -491,6 +491,43 @@ export default function CampaignCreate() {
     }
   };
 
+  const handleCloseProgress = () => {
+    setShowProgress(false);
+    setProgressData(null);
+  };
+
+  const handleRetryFailed = async (failedMessages = []) => {
+    try {
+      const token = localStorage.getItem('token');
+      const recipients = failedMessages
+        .map(message => message.phone || message.recipient)
+        .filter(Boolean);
+
+      if (recipients.length === 0) {
+        toast.error('No failed recipients are available to retry');
+        return;
+      }
+
+      await axios.post(
+        API_ENDPOINTS.WHATSAPP.SEND_CAMPAIGN,
+        {
+          recipients,
+          message: formData.content,
+          campaignId: progressData?.campaignId
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          timeout: 60000
+        }
+      );
+
+      toast.success(`Retrying ${recipients.length} failed messages...`);
+    } catch (error) {
+      const errorMsg = error.response?.data?.message || error.message;
+      toast.error(`Failed to retry messages: ${errorMsg}`);
+    }
+  };
+
   const renderStepContent = (step) => {
     switch (step) {
       case 0:

@@ -10,6 +10,7 @@ app.use('/api', createProxyMiddleware({
   target: API_TARGET,
   changeOrigin: true,
   secure: false,
+  pathRewrite: (path) => `/api${path}`,
   onError: (err, req, res) => {
     console.error('Proxy error:', err.message);
     res.status(500).json({ error: 'Backend proxy error' });

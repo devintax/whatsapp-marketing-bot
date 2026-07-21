@@ -159,18 +159,20 @@ window.testAPIConnectivity = async function() {
   console.log('Current hostname:', hostname);
   
   let apiUrl;
-  if (hostname === 'connect.vemgootech.info') {
+  if (hostname === 'bot.dfgworld.net') {
+    apiUrl = 'https://bot.dfgworld.net';
+  } else if (hostname === 'connect.vemgootech.info') {
     apiUrl = 'https://api.vemgootech.info';
   } else if (hostname === '10.0.0.181') {
-    apiUrl = 'http://10.0.0.181:5000';
+    apiUrl = 'http://10.0.0.181:5010';
   } else {
-    apiUrl = 'http://localhost:5000';
+    apiUrl = `${window.location.protocol}//${window.location.host}`;
   }
   
   console.log('Testing API URL:', apiUrl);
   
   try {
-    const response = await fetch(`${apiUrl}/health`, {
+    const response = await fetch(`${apiUrl}/api/health`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

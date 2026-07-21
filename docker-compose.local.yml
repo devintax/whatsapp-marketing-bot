@@ -1,4 +1,12 @@
 services:
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
   redis:
     image: redis:7-alpine
     command: redis-server --appendonly yes
@@ -26,4 +34,5 @@ services:
       - tunnel
 
 volumes:
+  mongo-data:
   redis-data:
